@@ -34,7 +34,7 @@ encryptbit="C"
 ansible-playbook /opt/pgclone/ymls/crypt.yml -e "drive=tcrypt"; fi
 
 # builds the list
-ls -la /opt/appdata/plexguide/.blitzkeys/ | awk '{print $9}' | tail -n +4 | sort | uniq > /var/plexguide/.blitzlist
+ls -la /opt/appdata/pgclone/.blitzkeys/ | awk '{print $9}' | tail -n +4 | sort | uniq > /var/plexguide/.blitzlist
 rm -rf /var/plexguide/.blitzfinal 1>/dev/null 2>&1
 touch /var/plexguide/.blitzbuild
 while read p; do

@@ -28,20 +28,20 @@ pgclonevars () {
     clonesalt=$(cat /var/plexguide/pgclone.salt)
   fi
 
-  variable /opt/appdata/plexguide/.gdrive "NOT-SET"
-  if [[ $(cat /opt/appdata/plexguide/.gdrive) == "NOT-SET" ]]; then gstatus="NOT-SET"
+  variable /opt/appdata/pgclone/.gdrive "NOT-SET"
+  if [[ $(cat /opt/appdata/pgclone/.gdrive) == "NOT-SET" ]]; then gstatus="NOT-SET"
   else gstatus="ACTIVE"; fi
 
-  variable /opt/appdata/plexguide/.tdrive "NOT-SET"
-  if [[ $(cat /opt/appdata/plexguide/.tdrive) == "NOT-SET" ]]; then tstatus="NOT-SET"
+  variable /opt/appdata/pgclone/.tdrive "NOT-SET"
+  if [[ $(cat /opt/appdata/pgclone/.tdrive) == "NOT-SET" ]]; then tstatus="NOT-SET"
   else tstatus="ACTIVE"; fi
 
-  variable /opt/appdata/plexguide/.tcrypt "NOT-SET"
-  if [[ $(cat /opt/appdata/plexguide/.tcrypt) == "NOT-SET" ]]; then tcstatus="NOT-SET"
+  variable /opt/appdata/pgclone/.tcrypt "NOT-SET"
+  if [[ $(cat /opt/appdata/pgclone/.tcrypt) == "NOT-SET" ]]; then tcstatus="NOT-SET"
   else tcstatus="ACTIVE"; fi
 
-  variable /opt/appdata/plexguide/.gcrypt "NOT-SET"
-  if [[ $(cat /opt/appdata/plexguide/.gcrypt) == "NOT-SET" ]]; then gcstatus="NOT-SET"
+  variable /opt/appdata/pgclone/.gcrypt "NOT-SET"
+  if [[ $(cat /opt/appdata/pgclone/.gcrypt) == "NOT-SET" ]]; then gcstatus="NOT-SET"
   else gcstatus="ACTIVE"; fi
 
   transport=$(cat /var/plexguide/pgclone.transport)
@@ -61,8 +61,8 @@ pgclonevars () {
   variable /var/plexguide/pgclone.public ""
   pgclonepublic=$(cat /var/plexguide/pgclone.public)
 
-  mkdir -p /opt/appdata/plexguide/.blitzkeys
-  displaykey=$(ls /opt/appdata/plexguide/.blitzkeys | wc -l)
+  mkdir -p /opt/appdata/pgclone/.blitzkeys
+  displaykey=$(ls /opt/appdata/pgclone/.blitzkeys | wc -l)
 
   variable /var/plexguide/pgclone.secret ""
   pgclonesecret=$(cat /var/plexguide/pgclone.secret)

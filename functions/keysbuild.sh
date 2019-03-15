@@ -40,13 +40,13 @@ else keystart; fi
 keyphase2 () {
 num=$typed
 
-rm -rf /opt/appdata/plexguide/blitzkeys 1>/dev/null 2>&1
-mkdir -p /opt/appdata/plexguide/blitzkeys
+rm -rf /opt/appdata/pgclone/blitzkeys 1>/dev/null 2>&1
+mkdir -p /opt/appdata/pgclone/blitzkeys
 
-cat /opt/appdata/plexguide/.gdrive > /opt/appdata/plexguide/rclone.conf
-if [ -e "/opt/appdata/plexguide/.tdrive" ]; then cat /opt/appdata/plexguide/.tdrive >> /opt/appdata/plexguide/.keytemp; fi
-if [ -e "/opt/appdata/plexguide/.gcrypt" ]; then cat /opt/appdata/plexguide/.gcrypt >> /opt/appdata/plexguide/.keytemp; fi
-if [ -e "/opt/appdata/plexguide/.tcrypt" ]; then cat /opt/appdata/plexguide/.tcrypt >> /opt/appdata/plexguide/.keytemp; fi
+cat /opt/appdata/pgclone/.gdrive > /opt/appdata/pgclone/rclone.conf
+if [ -e "/opt/appdata/pgclone/.tdrive" ]; then cat /opt/appdata/pgclone/.tdrive >> /opt/appdata/pgclone/.keytemp; fi
+if [ -e "/opt/appdata/pgclone/.gcrypt" ]; then cat /opt/appdata/pgclone/.gcrypt >> /opt/appdata/pgclone/.keytemp; fi
+if [ -e "/opt/appdata/pgclone/.tcrypt" ]; then cat /opt/appdata/pgclone/.tcrypt >> /opt/appdata/pgclone/.keytemp; fi
 
 gcloud --account=${pgcloneemail} iam service-accounts list |  awk '{print $1}' | \
        tail -n +2 | cut -c2- | cut -f1 -d "?" | sort | uniq > /var/plexguide/.gcloudblitz
@@ -67,11 +67,11 @@ count=0
 gdsacount=0
 gcount=0
 tempbuild=0
-rm -rf /opt/appdata/plexguide/.keys 1>/dev/null 2>&1
-touch /opt/appdata/plexguide/.keys
-rm -rf /opt/appdata/plexguide/.blitzkeys
-mkdir -p /opt/appdata/plexguide/.blitzkeys
-echo "" > /opt/appdata/plexguide/.keys
+rm -rf /opt/appdata/pgclone/.keys 1>/dev/null 2>&1
+touch /opt/appdata/pgclone/.keys
+rm -rf /opt/appdata/pgclone/.blitzkeys
+mkdir -p /opt/appdata/pgclone/.blitzkeys
+echo "" > /opt/appdata/pgclone/.keys
 
 tee <<-EOF
 
@@ -90,7 +90,7 @@ keycreate1 () {
     #echo $count # for tshoot
     gdsacount
     gcloud --account=${pgcloneemail} iam service-accounts create blitz0${count} --display-name “blitz0${count}”
-    gcloud --account=${pgcloneemail} iam service-accounts keys create /opt/appdata/plexguide/.blitzkeys/GDSA${tempbuild} --iam-account blitz0${count}@${pgcloneproject}.iam.gserviceaccount.com --key-file-type="json"
+    gcloud --account=${pgcloneemail} iam service-accounts keys create /opt/appdata/pgclone/.blitzkeys/GDSA${tempbuild} --iam-account blitz0${count}@${pgcloneproject}.iam.gserviceaccount.com --key-file-type="json"
     gdsabuild
     if [[ "$gcount" -ge "1" && "$gcount" -le "9" ]]; then echo "blitz0${count} is linked to GDSA${tempbuild}"
     else echo "blitz0${count} is linked to GDSA${gcount}"; fi
@@ -103,7 +103,7 @@ keycreate2 () {
     #echo $count # for tshoot
     gdsacount
     gcloud --account=${pgcloneemail} iam service-accounts create blitz${count} --display-name “blitz${count}”
-    gcloud --account=${pgcloneemail} iam service-accounts keys create /opt/appdata/plexguide/.blitzkeys/GDSA${tempbuild} --iam-account blitz${count}@${pgcloneproject}.iam.gserviceaccount.com --key-file-type="json"
+    gcloud --account=${pgcloneemail} iam service-accounts keys create /opt/appdata/pgclone/.blitzkeys/GDSA${tempbuild} --iam-account blitz${count}@${pgcloneproject}.iam.gserviceaccount.com --key-file-type="json"
     gdsabuild
     if [[ "$gcount" -ge "1" && "$gcount" -le "9" ]]; then echo "blitz${count} is linked to GDSA${tempbuild}"
     else echo "blitz${count} is linked to GDSA${gcount}"; fi
@@ -129,11 +129,11 @@ done
 gdsabuild () {
 pgclonevars
 ####tempbuild is need in order to call the correct gdsa
-tee >> /opt/appdata/plexguide/.keys <<-EOF
+tee >> /opt/appdata/pgclone/.keys <<-EOF
 [GDSA${tempbuild}]
 type = drive
 scope = drive
-service_account_file = /opt/appdata/plexguide/.blitzkeys/GDSA${tempbuild}
+service_account_file = /opt/appdata/pgclone/.blitzkeys/GDSA${tempbuild}
 team_drive = ${tdid}
 
 EOF
@@ -142,7 +142,7 @@ if [[ "$transport" == "be" ]]; then
 encpassword=$(rclone obscure "${clonepassword}")
 encsalt=$(rclone obscure "${clonesalt}")
 
-tee >> /opt/appdata/plexguide/.keys <<-EOF
+tee >> /opt/appdata/pgclone/.keys <<-EOF
 [GDSA${tempbuild}C]
 type = crypt
 remote = GDSA${tempbuild}:/encrypt
@@ -154,7 +154,7 @@ password2 = $encsalt
 EOF
 
 fi
-#echo "" /opt/appdata/plexguide/.keys
+#echo "" /opt/appdata/pgclone/.keys
 }
 
 gdsaemail () {
@@ -230,7 +230,7 @@ esac
 }
 
 yesdeletekeys () {
-rm -rf /opt/appdata/plexguide/.blitzkeys/* 1>/dev/null 2>&1
+rm -rf /opt/appdata/pgclone/.blitzkeys/* 1>/dev/null 2>&1
 echo ""
 while read p; do
 gcloud --account=${pgcloneemail} iam service-accounts delete $p --quiet

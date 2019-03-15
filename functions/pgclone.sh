@@ -38,7 +38,7 @@ EOF
 }
 
 statusmount () {
-  mcheck5=$(cat /opt/appdata/plexguide/rclone.conf | grep "$type")
+  mcheck5=$(cat /opt/appdata/pgclone/rclone.conf | grep "$type")
   if [ "$mcheck5" != "" ]; then
 tee <<-EOF
 
@@ -58,14 +58,14 @@ elif [[ "$typed" == "N" || "$typed" == "n" ]]; then mountsmenu
     statusmount
   fi
 
-  rclone config delete $type --config /opt/appdata/plexguide/rclone.conf
+  rclone config delete $type --config /opt/appdata/pgclone/rclone.conf
 
   encheck=$(cat /var/plexguide/pgclone.transport)
   if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
     if [ "$type" == "gdrive" ]; then
-    rclone config delete gcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+    rclone config delete gcrypt --config /opt/appdata/pgclone/rclone.conf; fi
     if [ "$type" == "tdrive" ]; then
-    rclone config delete tcrypt --config /opt/appdata/plexguide/rclone.conf; fi
+    rclone config delete tcrypt --config /opt/appdata/pgclone/rclone.conf; fi
   fi
 
 tee <<-EOF
@@ -190,10 +190,10 @@ https://accounts.google.com/o/oauth2/auth?client_id=$public&redirect_uri=urn:iet
 EOF
   read -p '↘️  Token | PRESS [ENTER]: ' token < /dev/tty
   if [ "$token" = "exit" ]; then mountsmenu; fi
-  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
+  curl --request POST --data "code=$token&client_id=$public&client_secret=$secret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/pgclone/pgclone.info
 
-  accesstoken=$(cat /opt/appdata/plexguide/pgclone.info | grep access_token | awk '{print $2}')
-  refreshtoken=$(cat /opt/appdata/plexguide/pgclone.info | grep refresh_token | awk '{print $2}')
+  accesstoken=$(cat /opt/appdata/pgclone/pgclone.info | grep access_token | awk '{print $2}')
+  refreshtoken=$(cat /opt/appdata/pgclone/pgclone.info | grep refresh_token | awk '{print $2}')
   rcdate=$(date +'%Y-%m-%d')
   rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
   rczone=$(date +"%:z")
@@ -737,16 +737,16 @@ EOF
 }
 
 testphase () {
-  echo "" > /opt/appdata/plexguide/test.conf
-  echo "[$type]" >> /opt/appdata/plexguide/test.conf
-  echo "client_id = $public" >> /opt/appdata/plexguide/test.conf
-  echo "client_secret = $secret" >> /opt/appdata/plexguide/test.conf
-  echo "type = drive" >> /opt/appdata/plexguide/test.conf
-  echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/test.conf
-  echo "" >> /opt/appdata/plexguide/test.conf
+  echo "" > /opt/appdata/pgclone/test.conf
+  echo "[$type]" >> /opt/appdata/pgclone/test.conf
+  echo "client_id = $public" >> /opt/appdata/pgclone/test.conf
+  echo "client_secret = $secret" >> /opt/appdata/pgclone/test.conf
+  echo "type = drive" >> /opt/appdata/pgclone/test.conf
+  echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/pgclone/test.conf
+  echo "" >> /opt/appdata/pgclone/test.conf
   if [ "$type" == "tdrive" ]; then
   teamid=$(cat /var/plexguide/pgclone.teamid)
-  echo "team_drive = $teamid" >> /opt/appdata/plexguide/test.conf; fi
+  echo "team_drive = $teamid" >> /opt/appdata/pgclone/test.conf; fi
   echo ""
 
 ## Adds Encryption to the Test Phase if Move or Blitz Encrypted is On
@@ -760,14 +760,14 @@ if [[ "$encheck" == "eblitz" || "$encheck" == "emove" ]]; then
   SALT=`cat /var/plexguide/pgclone.salt`
   ENC_PASSWORD=`rclone obscure "$PASSWORD"`
   ENC_SALT=`rclone obscure "$SALT"`
-  echo "" >> /opt/appdata/plexguide/test.conf
-  echo "[$entype]" >> /opt/appdata/plexguide/test.conf
-  echo "type = crypt" >> /opt/appdata/plexguide/test.conf
-  echo "remote = $type:/encrypt" >> /opt/appdata/plexguide/test.conf
-  echo "filename_encryption = standard" >> /opt/appdata/plexguide/test.conf
-  echo "directory_name_encryption = true" >> /opt/appdata/plexguide/test.conf
-  echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/test.conf
-  echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/test.conf;
+  echo "" >> /opt/appdata/pgclone/test.conf
+  echo "[$entype]" >> /opt/appdata/pgclone/test.conf
+  echo "type = crypt" >> /opt/appdata/pgclone/test.conf
+  echo "remote = $type:/encrypt" >> /opt/appdata/pgclone/test.conf
+  echo "filename_encryption = standard" >> /opt/appdata/pgclone/test.conf
+  echo "directory_name_encryption = true" >> /opt/appdata/pgclone/test.conf
+  echo "password = $ENC_PASSWORD" >> /opt/appdata/pgclone/test.conf
+  echo "password2 = $ENC_SALT" >> /opt/appdata/pgclone/test.conf;
 
 fi
 testphase2
@@ -788,7 +788,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/test.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/test.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -796,7 +796,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/test.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/test.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -831,7 +831,7 @@ read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
 echo "✅ Activated" > /var/plexguide/$type.pgclone
 
 ## Copy the Test File to the Real RClone Conf
-cat /opt/appdata/plexguide/test.conf >> /opt/appdata/plexguide/rclone.conf
+cat /opt/appdata/pgclone/test.conf >> /opt/appdata/pgclone/rclone.conf
 
 ## Back to the Main Mount Menu
 mountsmenu

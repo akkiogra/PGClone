@@ -27,27 +27,27 @@ Quitting? Type >>> exit
 EOF
   read -p '↘️  Token | PRESS [ENTER]: ' token < /dev/tty
   if [[ "$token" == "exit" || "$token" == "Exit" || "$token" == "EXIT" ]]; then clonestart; fi
-  curl --request POST --data "code=$token&client_id=$pgclonepublic&client_secret=$pgclonesecret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/plexguide/pgclone.info
+  curl --request POST --data "code=$token&client_id=$pgclonepublic&client_secret=$pgclonesecret&redirect_uri=urn:ietf:wg:oauth:2.0:oob&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token > /opt/appdata/pgclone/pgclone.info
 
-  accesstoken=$(cat /opt/appdata/plexguide/pgclone.info | grep access_token | awk '{print $2}')
-  refreshtoken=$(cat /opt/appdata/plexguide/pgclone.info | grep refresh_token | awk '{print $2}')
+  accesstoken=$(cat /opt/appdata/pgclone/pgclone.info | grep access_token | awk '{print $2}')
+  refreshtoken=$(cat /opt/appdata/pgclone/pgclone.info | grep refresh_token | awk '{print $2}')
   rcdate=$(date +'%Y-%m-%d')
   rctime=$(date +"%H:%M:%S" --date="$givenDate 60 minutes")
   rczone=$(date +"%:z")
   final=$(echo "${rcdate}T${rctime}${rczone}")
 
 ########################
-rm -rf /opt/appdata/plexguide/.${type} 1>/dev/null 2>&1
-echo "" > /opt/appdata/plexguide/.${type}
-echo "[$type]" >> /opt/appdata/plexguide/.${type}
-echo "client_id = $pgclonepublic" >> /opt/appdata/plexguide/.${type}
-echo "client_secret = $pgclonesecret" >> /opt/appdata/plexguide/.${type}
-echo "type = drive" >> /opt/appdata/plexguide/.${type}
-echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/plexguide/.${type}
-echo "" >> /opt/appdata/plexguide/.${type}
+rm -rf /opt/appdata/pgclone/.${type} 1>/dev/null 2>&1
+echo "" > /opt/appdata/pgclone/.${type}
+echo "[$type]" >> /opt/appdata/pgclone/.${type}
+echo "client_id = $pgclonepublic" >> /opt/appdata/pgclone/.${type}
+echo "client_secret = $pgclonesecret" >> /opt/appdata/pgclone/.${type}
+echo "type = drive" >> /opt/appdata/pgclone/.${type}
+echo -n "token = {\"access_token\":${accesstoken}\"token_type\":\"Bearer\",\"refresh_token\":${refreshtoken}\"expiry\":\"${final}\"}" >> /opt/appdata/pgclone/.${type}
+echo "" >> /opt/appdata/pgclone/.${type}
 if [ "$type" == "tdrive" ]; then
 teamid=$(cat /var/plexguide/pgclone.teamid)
-echo "team_drive = $teamid" >> /opt/appdata/plexguide/.tdrive; fi
+echo "team_drive = $teamid" >> /opt/appdata/pgclone/.tdrive; fi
 echo ""
 
 echo ${type} > /var/plexguide/oauth.check
@@ -64,15 +64,15 @@ SALT=`cat /var/plexguide/pgclone.salt`
 ENC_PASSWORD=`rclone obscure "$PASSWORD"`
 ENC_SALT=`rclone obscure "$SALT"`
 
-rm -rf /opt/appdata/plexguide/.${entype} 1>/dev/null 2>&1
-echo "" >> /opt/appdata/plexguide/.${entype}
-echo "[$entype]" >> /opt/appdata/plexguide/.${entype}
-echo "type = crypt" >> /opt/appdata/plexguide/.${entype}
-echo "remote = $type:/encrypt" >> /opt/appdata/plexguide/.${entype}
-echo "filename_encryption = standard" >> /opt/appdata/plexguide/.${entype}
-echo "directory_name_encryption = true" >> /opt/appdata/plexguide/.${entype}
-echo "password = $ENC_PASSWORD" >> /opt/appdata/plexguide/.${entype}
-echo "password2 = $ENC_SALT" >> /opt/appdata/plexguide/.${entype};
+rm -rf /opt/appdata/pgclone/.${entype} 1>/dev/null 2>&1
+echo "" >> /opt/appdata/pgclone/.${entype}
+echo "[$entype]" >> /opt/appdata/pgclone/.${entype}
+echo "type = crypt" >> /opt/appdata/pgclone/.${entype}
+echo "remote = $type:/encrypt" >> /opt/appdata/pgclone/.${entype}
+echo "filename_encryption = standard" >> /opt/appdata/pgclone/.${entype}
+echo "directory_name_encryption = true" >> /opt/appdata/pgclone/.${entype}
+echo "password = $ENC_PASSWORD" >> /opt/appdata/pgclone/.${entype}
+echo "password2 = $ENC_SALT" >> /opt/appdata/pgclone/.${entype};
 fi
 
 tee <<-EOF

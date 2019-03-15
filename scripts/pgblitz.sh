@@ -21,7 +21,7 @@ startscript () {
 while read p; do
 
   rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
-  --config /opt/appdata/plexguide/rclone.conf \
+  --config /opt/appdata/pgclone/rclone.conf \
   --log-file=/var/plexguide/logs/pgblitz.log \
   --log-level ERROR --stats 5s --stats-file-name-length 0 \
   --min-age 2m \
@@ -42,7 +42,7 @@ while read p; do
   echo "Utilizing: $p" >> /var/plexguide/logs/pgblitz.log
 
   rclone moveto "{{hdpath}}/move" "${p}{{encryptbit}}:/" \
-  --config /opt/appdata/plexguide/rclone.conf \
+  --config /opt/appdata/pgclone/rclone.conf \
   --log-file=/var/plexguide/logs/pgblitz.log \
   --log-level INFO --stats 5s --stats-file-name-length 0 \
   --tpslimit 12 \

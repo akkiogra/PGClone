@@ -15,10 +15,10 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/.$oauthcheck $oauthcheck: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/.$oauthcheck $oauthcheck: | grep -oP plexguide | head -n1)
   if [[ "$rcheck" != "plexguide" ]]; then
-    rclone mkdir --config /opt/appdata/plexguide/.$oauthcheck $oauthcheck:/plexguide
-    rcheck=$(rclone lsd --config /opt/appdata/plexguide/.$oauthcheck $oauthcheck: | grep -oP plexguide | head -n1)
+    rclone mkdir --config /opt/appdata/pgclone/.$oauthcheck $oauthcheck:/plexguide
+    rcheck=$(rclone lsd --config /opt/appdata/pgclone/.$oauthcheck $oauthcheck: | grep -oP plexguide | head -n1)
   fi
 
   if [ "$rcheck" != "plexguide" ]; then
@@ -34,10 +34,10 @@ NOTES:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-rm -rf /opt/appdata/plexguide/.$oauthcheck 1>/dev/null 2>&1
+rm -rf /opt/appdata/pgclone/.$oauthcheck 1>/dev/null 2>&1
 
-    if [[ "$oauthcheck" == "gdrive" ]]; then rm -rf /opt/appdata/plexguide/.gcrypt 1>/dev/null 2>&1; fi
-    if [[ "$oauthcheck" == "tdrive" ]]; then rm -rf /opt/appdata/plexguide/.tcrypt 1>/dev/null 2>&1; fi
+    if [[ "$oauthcheck" == "gdrive" ]]; then rm -rf /opt/appdata/pgclone/.gcrypt 1>/dev/null 2>&1; fi
+    if [[ "$oauthcheck" == "tdrive" ]]; then rm -rf /opt/appdata/pgclone/.tcrypt 1>/dev/null 2>&1; fi
 
     read -p '↘️  Acknowledge Info | Press [ENTER] ' typed2 < /dev/tty
     clonestart

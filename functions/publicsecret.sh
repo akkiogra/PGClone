@@ -32,10 +32,10 @@ EOF
 read -p '↘️  Input Value | Press [Enter]: ' typed < /dev/tty
 case $typed in
 2 )
-    rm -rf /opt/appdata/plexguide/.gcrypt 1>/dev/null 2>&1
-    rm -rf /opt/appdata/plexguide/.gdrive 1>/dev/null 2>&1
-    rm -rf /opt/appdata/plexguide/.tcrypt 1>/dev/null 2>&1
-    rm -rf /opt/appdata/plexguide/.tdrive 1>/dev/null 2>&1
+    rm -rf /opt/appdata/pgclone/.gcrypt 1>/dev/null 2>&1
+    rm -rf /opt/appdata/pgclone/.gdrive 1>/dev/null 2>&1
+    rm -rf /opt/appdata/pgclone/.tcrypt 1>/dev/null 2>&1
+    rm -rf /opt/appdata/pgclone/.tdrive 1>/dev/null 2>&1
     rm -rf /var/plexguide/pgclone.teamdrive 1>/dev/null 2>&1
     rm -rf /var/plexguide/pgclone.public 1>/dev/null 2>&1
     rm -rf /var/plexguide/pgclone.secret 1>/dev/null 2>&1

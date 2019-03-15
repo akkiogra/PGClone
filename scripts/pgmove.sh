@@ -18,7 +18,7 @@ while true
 do
 
 rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
---config /opt/appdata/plexguide/rclone.conf \
+--config /opt/appdata/pgclone/rclone.conf \
 --log-file=/var/plexguide/logs/pgmove.log \
 --log-level ERROR --stats 5s --stats-file-name-length 0 \
 --min-age 2m \
@@ -33,7 +33,7 @@ rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
 --exclude="**ignore**"  --exclude="**inProgress**"
 
 rclone move "{{hdpath}}/move/" "{{type}}:/" \
---config /opt/appdata/plexguide/rclone.conf \
+--config /opt/appdata/pgclone/rclone.conf \
 --log-file=/var/plexguide/logs/pgmove.log \
 --log-level INFO --stats 5s --stats-file-name-length 0 \
 --bwlimit {{bandwidth.stdout}}M \

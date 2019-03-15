@@ -99,30 +99,30 @@ removepgservices () {
 }
 
 readrcloneconfig () {
-  touch /opt/appdata/plexguide/rclone.conf
+  touch /opt/appdata/pgclone/rclone.conf
   mkdir -p /var/plexguide/rclone/
 
-  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep gdrive)
+  gdcheck=$(cat /opt/appdata/pgclone/rclone.conf | grep gdrive)
   if [ "$gdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/gdrive.status && gdstatus="good";
   else echo "bad" > /var/plexguide/rclone/gdrive.status && gdstatus="bad"; fi
 
-  gccheck=$(cat /opt/appdata/plexguide/rclone.conf | grep "remote = gdrive:/encrypt")
+  gccheck=$(cat /opt/appdata/pgclone/rclone.conf | grep "remote = gdrive:/encrypt")
   if [ "$gccheck" != "" ]; then echo "good" > /var/plexguide/rclone/gcrypt.status && gcstatus="good";
   else echo "bad" > /var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
 
-  tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
+  tdcheck=$(cat /opt/appdata/pgclone/rclone.conf | grep tdrive)
   if [ "$tdcheck" != "" ]; then echo "good" > /var/plexguide/rclone/tdrive.status && tdstatus="good"
   else echo "bad" > /var/plexguide/rclone/tdrive.status && tdstatus="bad"; fi
 
 }
 
 rcloneconfig () {
-  rclone config --config /opt/appdata/plexguide/rclone.conf
+  rclone config --config /opt/appdata/pgclone/rclone.conf
 }
 
 keysprocessed () {
-  mkdir -p /opt/appdata/pgblitz/keys/processed
-  ls -1 /opt/appdata/pgblitz/keys/processed | wc -l > /var/plexguide/project.keycount
+  mkdir -p /opt/appdata/pgclone/keys/processed
+  ls -1 /opt/appdata/pgclone/keys/processed | wc -l > /var/plexguide/project.keycount
 }
 
 deletemelateron () {

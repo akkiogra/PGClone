@@ -27,7 +27,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -35,7 +35,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -78,7 +78,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -86,7 +86,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -127,7 +127,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -135,7 +135,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -176,7 +176,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -184,7 +184,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -226,7 +226,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf $type:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf $type:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -234,7 +234,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf $type: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf $type: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -275,7 +275,7 @@ if [ "$choicedel" != "" ]; then
   gcloud iam service-accounts delete $p --quiet
   done </var/plexguide/gdsa.cut
 
-rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+rm -rf /opt/appdata/pgclone/keys/processed/* 1>/dev/null 2>&1
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -332,9 +332,9 @@ gdsabuild () {
 
   downloadpath=$(cat /var/plexguide/server.hd.path)
   tempbuild=$(cat /var/plexguide/json.tempbuild)
-  path=/opt/appdata/pgblitz/keys
-  rpath=/opt/appdata/plexguide/rclone.conf
-  tdrive=$( cat /opt/appdata/plexguide/rclone.conf | grep team_drive | head -n1 )
+  path=/opt/appdata/pgclone/keys
+  rpath=/opt/appdata/pgclone/rclone.conf
+  tdrive=$( cat /opt/appdata/pgclone/rclone.conf | grep team_drive | head -n1 )
   tdrive="${tdrive:13}"
 
   if [ "$bencrypted" == "yes" ]; then
@@ -352,7 +352,7 @@ gdsabuild () {
   echo "client_secret =" >> $rpath
   echo "scope = drive" >> $rpath
   echo "root_folder_id =" >> $rpath
-  echo "service_account_file = /opt/appdata/pgblitz/keys/processed/$tempbuild" >> $rpath
+  echo "service_account_file = /opt/appdata/pgclone/keys/processed/$tempbuild" >> $rpath
   echo "team_drive = $tdrive" >> $rpath
 
   if [ "$bencrypted" == "yes" ]; then
@@ -405,25 +405,25 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
   project=$(cat /var/plexguide/pgclone.project)
 
   ##wipe previous keys stuck there
-  mkdir -p /opt/appdata/pgblitz/keys/processed/
-  rm -rf /opt/appdata/pgblitz/keys/processed/* 1>/dev/null 2>&1
+  mkdir -p /opt/appdata/pgclone/keys/processed/
+  rm -rf /opt/appdata/pgclone/keys/processed/* 1>/dev/null 2>&1
 
   ## purpose of the rewrite is to save gdrive and tdrive info and toss old GDSAs
-      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[tdrive\]" -A 5 > /opt/appdata/plexguide/tdrive.info
-      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[gdrive\]" -A 4 > /opt/appdata/plexguide/gdrive.info
-      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[tcrypt\]" -A 6 > /opt/appdata/plexguide/tcrypt.info
-      cat /opt/appdata/plexguide/rclone.conf | grep -w "\[gcrypt\]" -A 6 > /opt/appdata/plexguide/gcrypt.info
+      cat /opt/appdata/pgclone/rclone.conf | grep -w "\[tdrive\]" -A 5 > /opt/appdata/pgclone/tdrive.info
+      cat /opt/appdata/pgclone/rclone.conf | grep -w "\[gdrive\]" -A 4 > /opt/appdata/pgclone/gdrive.info
+      cat /opt/appdata/pgclone/rclone.conf | grep -w "\[tcrypt\]" -A 6 > /opt/appdata/pgclone/tcrypt.info
+      cat /opt/appdata/pgclone/rclone.conf | grep -w "\[gcrypt\]" -A 6 > /opt/appdata/pgclone/gcrypt.info
 
-      echo "#### rclone rewrite generated by pgblitz.com" > /opt/appdata/plexguide/rclone.conf
-      echo "" >> /opt/appdata/plexguide/rclone.conf
-      echo "" >> /opt/appdata/plexguide/rclone.conf
-      cat /opt/appdata/plexguide/gdrive.info >> /opt/appdata/plexguide/rclone.conf
-      echo "" >> /opt/appdata/plexguide/rclone.conf
-      cat /opt/appdata/plexguide/tdrive.info >> /opt/appdata/plexguide/rclone.conf
-      echo "" >> /opt/appdata/plexguide/rclone.conf
-      cat /opt/appdata/plexguide/tcrypt.info >> /opt/appdata/plexguide/rclone.conf
-      echo "" >> /opt/appdata/plexguide/rclone.conf
-      cat /opt/appdata/plexguide/gcrypt.info >> /opt/appdata/plexguide/rclone.conf
+      echo "#### rclone rewrite generated by pgblitz.com" > /opt/appdata/pgclone/rclone.conf
+      echo "" >> /opt/appdata/pgclone/rclone.conf
+      echo "" >> /opt/appdata/pgclone/rclone.conf
+      cat /opt/appdata/pgclone/gdrive.info >> /opt/appdata/pgclone/rclone.conf
+      echo "" >> /opt/appdata/pgclone/rclone.conf
+      cat /opt/appdata/pgclone/tdrive.info >> /opt/appdata/pgclone/rclone.conf
+      echo "" >> /opt/appdata/pgclone/rclone.conf
+      cat /opt/appdata/pgclone/tcrypt.info >> /opt/appdata/pgclone/rclone.conf
+      echo "" >> /opt/appdata/pgclone/rclone.conf
+      cat /opt/appdata/pgclone/gcrypt.info >> /opt/appdata/pgclone/rclone.conf
 
     while [ "$count" != "$keys" ]; do
     ((count++))
@@ -431,13 +431,13 @@ elif [ "$typed" == "6" ]; then echo "Creating 20 Keys - Daily Upload Limit Set t
 
     if [ "$count" -ge 1 -a "$count" -le 9 ]; then
       gcloud iam service-accounts create gdsa$rand --display-name “gdsa0$count”
-      gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa0$count --iam-account gdsa$rand@$project.iam.gserviceaccount.com --key-file-type="json"
+      gcloud iam service-accounts keys create /opt/appdata/pgclone/keys/processed/gdsa0$count --iam-account gdsa$rand@$project.iam.gserviceaccount.com --key-file-type="json"
       echo "gdsa0$count" > /var/plexguide/json.tempbuild
       gdsabuild
       echo ""
     else
       gcloud iam service-accounts create gdsa$rand --display-name “gdsa$count”
-      gcloud iam service-accounts keys create /opt/appdata/pgblitz/keys/processed/gdsa$count --iam-account gdsa$rand@$project.iam.gserviceaccount.com --key-file-type="json"
+      gcloud iam service-accounts keys create /opt/appdata/pgclone/keys/processed/gdsa$count --iam-account gdsa$rand@$project.iam.gserviceaccount.com --key-file-type="json"
       echo "gdsa$count" > /var/plexguide/json.tempbuild
       gdsabuild
       echo ""
@@ -502,13 +502,13 @@ read -p '🌍 Process Complete | Press [ENTER] ' typed2 < /dev/tty
 
 ufsbuilder () {
   downloadpath=$(cat /var/plexguide/server.hd.path)
-  ls -la /opt/appdata/pgblitz/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
+  ls -la /opt/appdata/pgclone/keys/processed | awk '{ print $9}' | tail -n +4 > /tmp/pg.gdsa.ufs
   rm -rf /tmp/pg.gdsa.build 1>/dev/null 2>&1
   #echo -n "/mnt/tdrive=RO:" > /tmp/pg.gdsa.build
   #echo -n "/mnt/gdrive=RO:" >> /tmp/pg.gdsa.build
   ##### Encryption Portion ### Start
-  #tcrypt=$(grep "tcrypt" /opt/appdata/plexguide/rclone.conf)
-  #gcrypt=$(grep "gcrypt" /opt/appdata/plexguide/rclone.conf)
+  #tcrypt=$(grep "tcrypt" /opt/appdata/pgclone/rclone.conf)
+  #gcrypt=$(grep "gcrypt" /opt/appdata/pgclone/rclone.conf)
 
   #if [ "$tcrypt" == "[tcrypt]" ]  && [ "$gcrypt" == "[gcrypt]" ]; then
   #    encryption="on"
@@ -545,7 +545,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf gdsa01:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf gdsa01:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -553,7 +553,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf gdsa01: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf gdsa01: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
@@ -586,7 +586,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   sleep 1
-  rclone mkdir --config /opt/appdata/plexguide/rclone.conf tdrive:/plexguide
+  rclone mkdir --config /opt/appdata/pgclone/rclone.conf tdrive:/plexguide
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -594,7 +594,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  rcheck=$(rclone lsd --config /opt/appdata/plexguide/rclone.conf tdrive: | grep -oP plexguide | head -n1)
+  rcheck=$(rclone lsd --config /opt/appdata/pgclone/rclone.conf tdrive: | grep -oP plexguide | head -n1)
 
   if [ "$rcheck" != "plexguide" ];then
 tee <<-EOF
