@@ -28,7 +28,7 @@ while read p; do
   echo "" >> /var/plexguide/logs/pgblitz.log
   echo "Utilizing: $p" >> /var/plexguide/logs/pgblitz.log
 
-  rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
+  rclone copyto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
   --config /opt/appdata/plexguide/rclone.conf \
   --log-file=/var/plexguide/logs/pgblitz.log \
   --log-level ERROR --stats 5s --stats-file-name-length 0 \

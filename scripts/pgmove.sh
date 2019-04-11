@@ -29,7 +29,7 @@ sleep 10
 while true
 do
 
-rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
+rclone copyto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
 --config /opt/appdata/plexguide/rclone.conf \
 --log-file=/var/plexguide/logs/pgmove.log \
 --log-level ERROR --stats 5s --stats-file-name-length 0 \
@@ -46,7 +46,7 @@ rclone moveto "{{hdpath}}/downloads/" "{{hdpath}}/move/" \
 chown -R 1000:1000 "{{hdpath}}/move"
 chmod -R 775 "{{hdpath}}/move"
 
-rclone move "{{hdpath}}/move/" "{{type}}:/" \
+rclone copy "{{hdpath}}/move/" "{{type}}:/" \
 --config /opt/appdata/plexguide/rclone.conf \
 --log-file=/var/plexguide/logs/pgmove.log \
 --log-level INFO --stats 5s --stats-file-name-length 0 \
